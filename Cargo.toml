@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 description = "PLATO agent shell — an agent in a room, with a game character on the outside"
 license = "MIT"
+repository = "https://github.com/SuperInstance/lau-agent-shell"
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }
