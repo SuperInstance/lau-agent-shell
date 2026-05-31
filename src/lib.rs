@@ -110,7 +110,7 @@ impl AgentShell {
             opacity: 1.0,
             animation: CharacterAnimation::Idle,
             accessories: Vec::new(),
-            expression: "neutral".into(),
+            expression: "wondering".into(),
         };
         Self {
             state,
@@ -220,7 +220,8 @@ impl AgentShell {
     /// Sync agent state to character appearance.
     fn sync_appearance(&mut self) {
         // Color: vibe maps to hue (blue=low, green=mid, red=high)
-        let hue = ((self.state.vibe + 1.0) / 2.0).clamp(0.0, 1.0);
+        let t = ((self.state.vibe + 1.0) / 2.0).clamp(0.0, 1.0);
+        let hue = (1.0 - t) * 0.66; // 0.66=blue(low vibe), 0.33=green, 0=red(high vibe)
         self.appearance.body_color = hue_to_rgb(hue);
 
         // Glow: confidence
